@@ -37,7 +37,7 @@
 
   async function filtraCategoria() {
     try {
-      const res = await fetch(`http://localhost:3080/articoli/categoria/${categoria}`,
+      const res = await fetch(`https://backendls-1.onrender.com/articoli/categoria/${categoria}`,
                 {credentials: 'include'});
       const data = await res.json();
       articoli = data;
@@ -48,7 +48,7 @@
 
   async function aggiungiArticolo() {
     try {
-      const res = await fetch('http://localhost:3080/articoli', {
+      const res = await fetch('https://backendls-1.onrender.com/articoli', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(nuovoArticolo),
@@ -82,7 +82,7 @@
 
   async function eliminaArticolo(id) {
     try {
-      const risposta = await fetch(`http://localhost:3080/articoli/${id}`, {
+      const risposta = await fetch(`https://backendls-1.onrender.com/articoli/${id}`, {
         method: 'DELETE',
         credentials: 'include'
       });

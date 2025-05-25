@@ -80,7 +80,7 @@
 
   async function rimuoviArticolo() {
     try {
-      const res = await fetch(`http://localhost:3080/rimuoviArticolo/utente/${articolo.Id_art}`, {
+      const res = await fetch(`https://backendls-1.onrender.com/rimuoviArticolo/utente/${articolo.Id_art}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

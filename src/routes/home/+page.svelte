@@ -47,7 +47,7 @@
 
         isSearching = true;
         try {
-            const res = await fetch(`http://localhost:3080/articoli/ricerca/${encodeURIComponent(searchTerm.trim())}`, {
+            const res = await fetch(`https://backendls-1.onrender.com/articoli/ricerca/${encodeURIComponent(searchTerm.trim())}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

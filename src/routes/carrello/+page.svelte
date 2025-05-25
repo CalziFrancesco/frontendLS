@@ -36,7 +36,7 @@
   
   async function svuotaCarrello() {
      try {
-      const res = await fetch(`http://localhost:3080/carrello/utente/svuota`, {
+      const res = await fetch(`https://backendls-1.onrender.com/carrello/utente/svuota`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
