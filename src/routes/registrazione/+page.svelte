@@ -59,12 +59,15 @@
 </script>
 
 <svelte:head>
-  <title>Registrazione</title>
+  <title>Registrazione - LISTIFY</title>
 </svelte:head>
 
 <main class="login-container">
   <div class="login-card">
-    <h1>Registrati</h1>
+    <div class="logo-section">
+      <h1>LISTIFY</h1>
+      <div class="subtitle">Eleganza digitale</div>
+    </div>
    
     <form onsubmit={handleRegistration}>
       <div class="field">
@@ -130,120 +133,220 @@
         <div class="success">{success}</div>
       {/if}
       
-      <button type="submit" disabled={isLoading}>
+      <button type="submit" disabled={isLoading} class="register-btn">
         {isLoading ? 'Registrazione in corso...' : 'Registrati'}
       </button>
     </form>
     
-    <p class="forgot-password">
+    <p class="login-link">
       <a href="/">Hai già un account? Accedi</a>
     </p>
   </div>
+  
+  <div class="background-pattern"></div>
 </main>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
+  
   .login-container {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f5f5f5;
-    font-family: system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .background-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(76, 255, 76, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(76, 255, 76, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 40% 60%, rgba(76, 255, 76, 0.05) 0%, transparent 50%);
+    z-index: 0;
   }
   
   .login-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    border: 2px solid rgba(76, 255, 76, 0.3);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(76, 255, 76, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .logo-section {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(76, 255, 76, 0.2);
   }
   
   h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #333;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4cff4c;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(76, 255, 76, 0.3);
+    letter-spacing: 2px;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    font-style: italic;
+    margin-top: 0.5rem;
+    letter-spacing: 1px;
   }
   
   .field {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
   
   label {
     display: block;
-    margin-bottom: 0.5rem;
-    color: #555;
+    margin-bottom: 0.7rem;
+    color: #4cff4c;
     font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
   }
   
   input {
     width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 1rem 1.2rem;
+    background: rgba(26, 26, 26, 0.8);
+    border: 2px solid rgba(76, 255, 76, 0.2);
+    border-radius: 12px;
     font-size: 1rem;
+    color: #ffffff;
     box-sizing: border-box;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
   }
   
   input:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    border-color: #4cff4c;
+    box-shadow: 
+      0 0 0 3px rgba(76, 255, 76, 0.2),
+      0 0 20px rgba(76, 255, 76, 0.1);
+    background: rgba(26, 26, 26, 0.95);
   }
   
-  button {
+  .register-btn {
     width: 100%;
-    padding: 0.75rem;
-    background-color: #007bff;
-    color: white;
+    padding: 1rem;
+    background: linear-gradient(135deg, #4cff4c 0%, #39d939 100%);
+    color: #1a1a1a;
     border: none;
-    border-radius: 4px;
-    font-size: 1rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 
+      0 4px 15px rgba(76, 255, 76, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    font-family: 'Inter', sans-serif;
   }
   
-  button:hover:not(:disabled) {
-    background-color: #0056b3;
+  .register-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #39d939 0%, #2eb82e 100%);
+    transform: translateY(-2px);
+    box-shadow: 
+      0 8px 25px rgba(76, 255, 76, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
   
-  button:disabled {
-    background-color: #6c757d;
+  .register-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 
+      0 4px 15px rgba(76, 255, 76, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  .register-btn:disabled {
+    background: rgba(76, 255, 76, 0.3);
+    color: rgba(26, 26, 26, 0.6);
     cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
   }
   
   .error {
-    color: #dc3545;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    padding: 0.75rem;
-    border-radius: 4px;
-    margin-bottom: 1rem;
+    color: #ff4757;
+    background: rgba(255, 71, 87, 0.1);
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
     font-size: 0.9rem;
+    backdrop-filter: blur(10px);
   }
   
   .success {
-    color: #155724;
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-    padding: 0.75rem;
-    border-radius: 4px;
-    margin-bottom: 1rem;
+    color: #4cff4c;
+    background: rgba(76, 255, 76, 0.1);
+    border: 1px solid rgba(76, 255, 76, 0.3);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
     font-size: 0.9rem;
+    backdrop-filter: blur(10px);
   }
   
-  .forgot-password {
+  .login-link {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(76, 255, 76, 0.2);
   }
   
-  .forgot-password a {
-    color: #007bff;
+  .login-link a {
+    color: #4cff4c;
     text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
   }
   
-  .forgot-password a:hover {
-    text-decoration: underline;
+  .login-link a:hover {
+    color: #39d939;
+    text-shadow: 0 0 10px rgba(76, 255, 76, 0.5);
+  }
+  
+  @media (max-width: 480px) {
+    .login-card {
+      margin: 1rem;
+      padding: 2rem 1.5rem;
+    }
+    
+    h1 {
+      font-size: 2rem;
+    }
   }
 </style>

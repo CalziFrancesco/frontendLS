@@ -100,7 +100,9 @@
 </script>
 
 <div class="main-container">
+    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
     <div class="header-section">
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
         <img src={lista} alt="" class="lista" onclick={navigaCarrello}>
         
         <div class="logo-title-container">
@@ -276,15 +278,15 @@
 
 <style>
 :root {
-    --primary-green: #22c55e;
-    --primary-green-dark: #16a34a;
-    --primary-green-light: #86efac;
-    --accent-black: #1f2937;
-    --accent-dark: #111827;
-    --bg-cream: #fefce8;
-    --text-dark: #374151;
-    --border-elegant: #d1d5db;
-    --shadow-elegant: rgba(34, 197, 94, 0.15);
+    --primary-green: #4cff4c;
+    --primary-green-dark: #39d939;
+    --primary-green-light: rgba(76, 255, 76, 0.2);
+    --accent-black: #1a1a1a;
+    --accent-dark: #0d0d0d;
+    --bg-cream: #1a1a1a;
+    --text-dark: #ffffff;
+    --border-elegant: rgba(76, 255, 76, 0.3);
+    --shadow-elegant: rgba(76, 255, 76, 0.25);
     --gradient-main: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
 }
 
@@ -296,7 +298,7 @@
 
 body {
     background: var(--bg-cream);
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: 'Inter', 'Georgia', 'Times New Roman', serif;
     color: var(--text-dark);
     line-height: 1.6;
 }
@@ -304,9 +306,9 @@ body {
 .main-container {
     min-height: 100vh;
     background: 
-        radial-gradient(circle at 20% 20%, var(--primary-green-light) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, var(--primary-green-light) 0%, transparent 50%),
-        var(--bg-cream);
+        radial-gradient(circle at 20% 20%, rgba(76, 255, 76, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(76, 255, 76, 0.08) 0%, transparent 50%),
+        linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
 }
 
 .header-section {
@@ -322,6 +324,8 @@ body {
     flex-direction: column;
     align-items: center;
     flex: 1;
+    justify-content: center;
+    margin-left: 100px;
 }
 
 .logo {
@@ -330,8 +334,8 @@ body {
 }
 
 .logo img {
-    width: 280px;
-    height: 180px;
+    width: 410px;
+    height: 280px;
     transition: transform 0.3s ease;
 }
 
@@ -346,23 +350,22 @@ body {
 .titolo h1 {
     font-size: 3rem;
     font-weight: 900;
-    color: var(--accent-black);
+    color: var(--primary-green);
     text-transform: uppercase;
     letter-spacing: 0.2em;
     margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    background: var(--gradient-main);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    text-shadow: 
+        0 0 20px rgba(76, 255, 76, 0.4),
+        0 0 40px rgba(76, 255, 76, 0.2);
+    font-family: 'Playfair Display', serif;
 }
 
 .subtitle {
     font-size: 1.1rem;
-    color: var(--text-dark);
+    color: rgba(255, 255, 255, 0.7);
     font-style: italic;
     opacity: 0.8;
-    font-family: 'Georgia', serif;
+    font-family: 'Inter', serif;
 }
 
 .lista {
@@ -372,19 +375,21 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px var(--shadow-elegant);
-    border: 3px solid var(--accent-black);
+    border: 3px solid var(--primary-green);
     object-fit: cover;
+    background: rgba(26, 26, 26, 0.8);
 }
 
 .lista:hover {
     transform: translateY(-3px) rotate(5deg);
     box-shadow: 0 8px 20px var(--shadow-elegant);
+    border-color: var(--primary-green-dark);
 }
 
 .logout {
     background: var(--gradient-main);
-    color: white;
-    border: 3px solid var(--accent-black);
+    color: var(--accent-black);
+    border: 3px solid var(--primary-green);
     border-radius: 25px;
     padding: 12px 24px;
     cursor: pointer;
@@ -425,13 +430,14 @@ body {
 .BarraRicerca {
     display: flex;
     align-items: center;
-    border: 3px solid var(--accent-black);
+    border: 3px solid var(--primary-green);
     border-radius: 25px;
     height: 60px;
     width: 70%;
     max-width: 600px;
     padding: 0 1.5rem;
-    background: white;
+    background: rgba(26, 26, 26, 0.9);
+    backdrop-filter: blur(20px);
     box-shadow: 0 8px 24px var(--shadow-elegant);
     position: relative;
     overflow: hidden;
@@ -455,11 +461,11 @@ body {
     padding: 0.5rem;
     background: transparent;
     color: var(--text-dark);
-    font-family: 'Georgia', serif;
+    font-family: 'Inter', serif;
 }
 
 .BarraRicerca input::placeholder {
-    color: #9ca3af;
+    color: rgba(255, 255, 255, 0.5);
     font-style: italic;
 }
 
@@ -489,7 +495,6 @@ body {
 .lente {
     width: 24px;
     height: auto;
-    filter: brightness(0) invert(1);
 }
 
 .search-results {
@@ -499,10 +504,11 @@ body {
     transform: translateX(-50%);
     width: 85%;
     max-width: 900px;
-    background: white;
-    border: 3px solid var(--accent-black);
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(20px);
+    border: 3px solid var(--primary-green);
     border-radius: 20px;
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
     z-index: 1000;
     max-height: 70vh;
     overflow-y: auto;
@@ -520,15 +526,15 @@ body {
 
 .search-results-header h3 {
     margin: 0;
-    color: white;
+    color: var(--accent-black);
     font-size: 1.3rem;
     font-weight: 600;
 }
 
 .close-search {
     background: var(--accent-black);
-    color: white;
-    border: none;
+    color: var(--primary-green);
+    border: 2px solid var(--primary-green);
     border-radius: 50%;
     width: 35px;
     height: 35px;
@@ -542,6 +548,8 @@ body {
 
 .close-search:hover {
     background: #dc2626;
+    color: white;
+    border-color: #dc2626;
     transform: scale(1.1);
 }
 
@@ -575,6 +583,7 @@ body {
 .no-results-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: var(--primary-green);
 }
 
 .results-grid {
@@ -591,7 +600,7 @@ body {
     margin-bottom: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: white;
+    background: rgba(26, 26, 26, 0.8);
     position: relative;
     overflow: hidden;
 }
@@ -609,7 +618,7 @@ body {
 }
 
 .search-result-item:hover {
-    background: #f8fffe;
+    background: rgba(26, 26, 26, 0.95);
     border-color: var(--primary-green);
     transform: translateY(-2px);
     box-shadow: 0 8px 24px var(--shadow-elegant);
@@ -625,20 +634,20 @@ body {
 
 .result-info h4 {
     margin: 0 0 0.5rem 0;
-    color: var(--accent-black);
+    color: var(--text-dark);
     font-size: 1.2rem;
     font-weight: 600;
 }
 
 .result-category {
-    color: var(--primary-green-dark);
+    color: var(--primary-green);
     font-weight: 600;
     margin: 0.25rem 0;
     font-size: 1rem;
 }
 
 .result-description {
-    color: var(--text-dark);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 0.95rem;
     margin: 0.5rem 0;
     line-height: 1.5;
@@ -653,12 +662,12 @@ body {
 
 .result-price {
     font-weight: 700;
-    color: var(--primary-green-dark);
+    color: var(--primary-green);
     font-size: 1.2rem;
 }
 
 .result-brand {
-    color: var(--text-dark);
+    color: var(--accent-black);
     font-size: 0.9rem;
     background: var(--primary-green-light);
     padding: 0.3rem 0.6rem;
@@ -683,7 +692,7 @@ body {
 
 :global(mark) {
     background: var(--primary-green-light);
-    color: var(--accent-black);
+    color: var(--text-dark);
     padding: 0.2rem 0.4rem;
     border-radius: 6px;
     font-weight: 600;
@@ -719,11 +728,13 @@ body {
 
 .section-title h2 {
     font-size: 2.5rem;
-    color: var(--accent-black);
+    color: var(--primary-green);
     font-weight: 700;
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    text-shadow: 0 0 20px rgba(76, 255, 76, 0.3);
+    font-family: 'Playfair Display', serif;
 }
 
 .title-decoration {
@@ -732,6 +743,7 @@ body {
     background: var(--gradient-main);
     margin: 0 auto;
     border-radius: 2px;
+    box-shadow: 0 0 10px rgba(76, 255, 76, 0.5);
 }
 
 .corridoi-grid {
@@ -743,8 +755,9 @@ body {
 }
 
 .corridoio {
-    background: white;
-    border: 3px solid var(--accent-black);
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(20px);
+    border: 3px solid var(--primary-green);
     border-radius: 20px;
     padding: 0;
     display: flex;
@@ -757,7 +770,7 @@ body {
     height: 140px;
     position: relative;
     overflow: hidden;
-    font-family: 'Georgia', serif;
+    font-family: 'Inter', serif;
 }
 
 .corridoio-background {
@@ -778,13 +791,14 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: var(--accent-black);
+    color: var(--text-dark);
     transition: color 0.3s ease;
 }
 
 .corridoio:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 16px 48px var(--shadow-elegant);
+    border-color: var(--primary-green-dark);
 }
 
 .corridoio:hover .corridoio-background {
@@ -792,17 +806,19 @@ body {
 }
 
 .corridoio:hover .corridoio-content {
-    color: white;
+    color: var(--accent-black);
 }
 
 .corridoio-icona {
     font-size: 3rem;
     margin-bottom: 0.8rem;
     transition: transform 0.3s ease;
+    color: var(--primary-green);
 }
 
 .corridoio:hover .corridoio-icona {
     transform: scale(1.2) rotate(5deg);
+    color: var(--accent-black);
 }
 
 .corridoio-nome {
@@ -821,9 +837,16 @@ body {
         padding: 1rem;
     }
 
-    .lista, .logout {
-        position: static;
-        margin: 0;
+    .logo-title-container {
+        order: 2;
+    }
+
+    .lista {
+        order: 1;
+    }
+
+    .logout {
+        order: 3;
     }
 
     .titolo h1 {

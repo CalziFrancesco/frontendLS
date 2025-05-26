@@ -1,8 +1,8 @@
 <script>
   import { onMount } from 'svelte';
   import Card from '$lib/Card.svelte';
-    import { goto } from '$app/navigation';
-  
+  import { goto } from '$app/navigation';
+
   let articoli = [];
   let error = '';
   let pagina = "carrello"
@@ -63,7 +63,18 @@
       return totale + prezzo;
     }, 0).toFixed(2);
   }
+
+  function goToHome() {
+    goto('/home');
+  }
+
 </script>
+
+<button class="home-button" on:click={goToHome} title="Torna alla Home">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</button>
 
 <div class="carrello-container">
   {#if error}
@@ -367,4 +378,25 @@
       flex: 1;
     }
   }
+
+  .home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;  /* POSIZIONE CORRETTA */
+    z-index: 1000;
+    background: var(--gradient-main);
+    color: var(--accent-black);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow-elegant);
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-green);
+}
+
 </style>
